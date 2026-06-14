@@ -7,7 +7,7 @@ export default function KeyInsights() {
   const { t } = useLocale();
 
   return (
-    <section className="px-6 md:px-12 py-6 max-w-7xl mx-auto mb-6">
+    <section className="px-4 sm:px-6 md:px-12 py-6 max-w-7xl mx-auto mb-6">
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}

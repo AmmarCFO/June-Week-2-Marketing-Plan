@@ -46,7 +46,7 @@ export default function BudgetFocus() {
   };
 
   return (
-    <section className="px-6 md:px-12 py-6 max-w-7xl mx-auto font-sans">
+    <section className="px-4 sm:px-6 md:px-12 py-6 max-w-7xl mx-auto font-sans">
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ export default function BudgetFocus() {
         id="budget-leakage-section"
       >
         {/* Panel Header */}
-        <div className="bg-white border-b border-[#eee] p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="bg-white border-b border-[#eee] p-4 sm:p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h2 className="font-serif text-lg font-normal text-navy-800">
               {t('budget_section_title')}
@@ -67,7 +67,7 @@ export default function BudgetFocus() {
           
           <div className={`${locale === 'ar' ? 'text-left' : 'text-right'} font-mono`}>
             <span className="text-[11px] text-slate-400 block lowercase">{t('budget_overall_status')}</span>
-            <span className="text-lg font-bold text-navy-800">
+            <span className="text-base sm:text-lg font-bold text-navy-800 whitespace-nowrap">
               {locale === 'ar' ? 'ريال/شهرياً ' : 'SAR '}
               {locale === 'ar' 
                 ? totalLeakage.toLocaleString('ar-EG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
@@ -77,10 +77,10 @@ export default function BudgetFocus() {
         </div>
 
         {/* Dashboard Grid */}
-        <div className="p-5 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="p-4 sm:p-5 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           
           {/* Main Leakage Horizontal Chart (Cols 1-7) */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
+          <div className="lg:col-span-7 flex flex-col justify-between gap-5">
             <div>
               <div className="flex justify-between items-center mb-4">
                 <span className="text-xs uppercase tracking-wider text-slate-500 font-bold">
@@ -92,7 +92,7 @@ export default function BudgetFocus() {
               </div>
 
               {/* Bar List Scroll Container */}
-              <div className="space-y-3.5 max-h-[580px] overflow-y-auto pr-2 custom-scrollbar">
+              <div className="space-y-3.5 max-h-[580px] overflow-y-auto pr-1 sm:pr-2 custom-scrollbar">
                 {LEAKAGE_DATA.map((item) => {
                   const isTop3 = item.rank <= 3;
                   const isHovered = hoveredIndex === item.rank;
@@ -108,15 +108,15 @@ export default function BudgetFocus() {
                       onMouseEnter={() => setHoveredIndex(item.rank)}
                       onMouseLeave={() => setHoveredIndex(null)}
                     >
-                      <div className="flex justify-between items-center text-xs mb-1 font-sans">
-                        <span className="font-semibold text-slate-700 bar-label">
+                      <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1 text-xs mb-1.5 font-sans">
+                        <span className="font-semibold text-slate-700 bar-label text-xs sm:text-[13px]">
                           {t(item.branch)}
                         </span>
-                        <div className="text-right font-mono text-[11px] flex items-center gap-1.5 direction-ltr">
-                          <span className="text-slate-400 text-[10px]">
+                        <div className={`text-right font-mono text-[11px] flex flex-wrap items-center gap-1.5 ${locale === 'ar' ? 'justify-start' : 'justify-end'} direction-ltr`}>
+                          <span className="text-slate-400 text-[10px] whitespace-nowrap">
                             ({locale === 'ar' ? item.vacantToday.toLocaleString('ar-EG') : item.vacantToday} {locale === 'ar' ? 'شاغر @ ' : 'vacant @ '} {locale === 'ar' ? item.share.replace('%', '٪') : item.share})
                           </span>
-                          <span className={`font-bold ${isTop3 ? 'text-gold-600' : 'text-navy-800'}`}>
+                          <span className={`font-bold whitespace-nowrap ${isTop3 ? 'text-gold-600' : 'text-navy-800'}`}>
                             {locale === 'ar' ? 'ريال ' : 'SAR '}
                             {locale === 'ar'
                               ? item.leakage.toLocaleString('ar-EG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
@@ -150,13 +150,13 @@ export default function BudgetFocus() {
             </div>
 
             {/* Verification Insight banner */}
-            <div className="mt-5 p-3.5 bg-slate-50 border border-[#eee] rounded-xl text-[11px] leading-relaxed text-slate-600 font-sans">
+            <div className="mt-2 p-3.5 bg-slate-50 border border-[#eee] rounded-xl text-[11px] leading-relaxed text-slate-600 font-sans">
               {t('budget_caption_desc')}
             </div>
           </div>
 
           {/* Detailed Table Ledger (Cols 8-12) */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
+          <div className="lg:col-span-5 flex flex-col justify-between gap-5">
             <div>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
@@ -181,14 +181,14 @@ export default function BudgetFocus() {
               {/* Minimal Clean Table */}
               <div className="border border-slate-200/80 rounded-xl overflow-hidden shadow-xs bg-white">
                 <div className="overflow-x-auto max-h-[380px] overflow-y-auto pr-1">
-                  <table className="w-full text-xs text-left border-collapse">
-                    <thead className="bg-[#F6F6F7] text-slate-600 font-bold border-b border-slate-200/60 sticky top-0 z-10 text-[10px] uppercase">
+                  <table className="w-full text-[11px] sm:text-xs text-left border-collapse min-w-[320px]">
+                    <thead className="bg-[#F6F6F7] text-slate-600 font-bold border-b border-slate-200/60 sticky top-0 z-10 text-[9px] sm:text-[10px] uppercase">
                       <tr>
-                        <th className={`py-2 px-3 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>{t('budget_table_col_rank')}</th>
+                        <th className={`py-2 px-1.5 xs:px-3 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>{t('budget_table_col_rank')}</th>
                         <th className={`py-2 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>{t('budget_table_col_branch')}</th>
                         <th className="py-2 text-center">{t('budget_table_col_vac')}</th>
                         <th className="py-2 text-center">{t('budget_table_col_share')}</th>
-                        <th className={`py-2 pr-3 pl-3 ${locale === 'ar' ? 'text-left' : 'text-right'}`}>{t('budget_table_col_sar')}</th>
+                        <th className={`py-2 pr-1.5 pl-1.5 xs:pr-3 xs:pl-3 ${locale === 'ar' ? 'text-left' : 'text-right'}`}>{t('budget_table_col_sar')}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
@@ -213,7 +213,7 @@ export default function BudgetFocus() {
                               onMouseEnter={() => setHoveredIndex(row.rank)}
                               onMouseLeave={() => setHoveredIndex(null)}
                             >
-                              <td className={`py-2 px-3 font-mono font-bold text-slate-400 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+                              <td className={`py-2 px-1.5 xs:px-3 font-mono font-bold text-slate-400 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
                                 {locale === 'ar' ? `#${row.rank.toLocaleString('ar-EG')}` : `#${row.rank}`}
                               </td>
                               <td className={`py-2 font-semibold text-navy-800 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
@@ -231,7 +231,7 @@ export default function BudgetFocus() {
                                   {locale === 'ar' ? row.share.replace('%', '٪') : row.share}
                                 </span>
                               </td>
-                              <td className={`py-2 font-mono font-semibold text-slate-800 ${locale === 'ar' ? 'text-left pl-3' : 'text-right pr-3'}`}>
+                              <td className={`py-2 font-mono font-semibold text-slate-800 ${locale === 'ar' ? 'text-left pl-1.5 pr-1.5 xs:pl-3 xs:pr-3' : 'text-right pr-1.5 pl-1.5 xs:pr-3 xs:pl-3'}`}>
                                 {locale === 'ar' 
                                   ? row.leakage.toLocaleString('ar-EG', { maximumFractionDigits: 0 })
                                   : row.leakage.toLocaleString('en-US', { maximumFractionDigits: 0 })}
@@ -247,7 +247,7 @@ export default function BudgetFocus() {
             </div>
 
             {/* Golden Highlighted executive Callout box */}
-            <div className="mt-4 p-3.5 bg-[#fdfcf9] rounded-xl border border-gold-500/20 font-sans">
+            <div className="mt-2 p-3.5 bg-[#fdfcf9] rounded-xl border border-gold-500/20 font-sans">
               <span className="text-[9px] uppercase text-gold-700 font-bold tracking-wider block mb-1">
                 {t('budget_callout_title')}
               </span>

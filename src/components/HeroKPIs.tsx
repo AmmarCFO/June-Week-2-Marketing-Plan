@@ -35,7 +35,7 @@ export default function HeroKPIs() {
   ];
 
   return (
-    <section className="bg-navy-800 py-6 px-6 md:px-12 border-b border-navy-900/40">
+    <section className="bg-navy-800 py-6 px-4 sm:px-6 md:px-12 border-b border-navy-900/40">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {cards.map((card, index) => {
           return (

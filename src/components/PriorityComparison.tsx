@@ -28,7 +28,7 @@ export default function PriorityComparison() {
   };
 
   return (
-    <section className="px-6 md:px-12 py-6 max-w-7xl mx-auto">
+    <section className="px-4 sm:px-6 md:px-12 py-6 max-w-7xl mx-auto">
       <motion.div 
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
@@ -37,119 +37,121 @@ export default function PriorityComparison() {
         id="priority-branches-section"
       >
         {/* Panel Header */}
-        <div className="bg-white border-b border-[#eee] p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="bg-white border-b border-[#eee] p-4 sm:p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h2 className="font-serif text-lg font-normal text-navy-800">
               {t('priority_section_title')}
             </h2>
-            <p className="text-[11px] text-slate-500 mt-0.5 font-sans">
+            <p className="text-[11px] text-slate-500 mt-0.5 font-sans leading-relaxed">
               {t('priority_section_subtitle')}
             </p>
           </div>
           
-          <span className="text-[11px] text-slate-400 font-mono tracking-wider uppercase bg-slate-50 px-2 py-1 rounded">
+          <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono tracking-wider uppercase bg-slate-50 px-2 py-1 rounded">
             {t('priority_sort_label')}
           </span>
         </div>
 
         {/* Layout Grid */}
-        <div className="p-5 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="p-4 sm:p-5 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           
           {/* Table View (Cols 1-7) */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
+          <div className="lg:col-span-7 flex flex-col justify-between gap-5">
             <div>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse text-left text-[13px]">
-                  <thead>
-                    <tr className="bg-slate-50 text-slate-500 font-bold border-b border-slate-200">
-                      <th className={`py-2.5 px-4 text-[11px] uppercase tracking-wider text-slate-600 font-bold ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
-                        {t('priority_col_branch')}
-                      </th>
-                      <th className="py-2.5 px-3 text-center text-[11px] uppercase tracking-wider text-slate-600 font-bold">
-                        {t('priority_col_baseline')}
-                      </th>
-                      <th className="py-2.5 px-3 text-center text-[11px] uppercase tracking-wider text-slate-600 font-bold">
-                        {t('priority_col_today')}
-                      </th>
-                      <th className={`py-2.5 px-4 text-[11px] uppercase tracking-wider text-slate-600 font-bold ${locale === 'ar' ? 'text-left' : 'text-right'}`}>
-                        {t('priority_col_delta')}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {PRIORITY_BRANCHES.map((row) => {
-                      const isHovered = hoveredBranch === row.branch;
+              <div className="overflow-x-auto -mx-4 sm:mx-0">
+                <div className="inline-block min-w-full align-middle">
+                  <table className="w-full border-collapse text-left text-xs sm:text-[13px]">
+                    <thead>
+                      <tr className="bg-slate-50 text-slate-500 font-bold border-b border-slate-200">
+                        <th className={`py-2.5 px-3 sm:px-4 text-[10px] sm:text-[11px] uppercase tracking-wider text-slate-600 font-bold ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+                          {t('priority_col_branch')}
+                        </th>
+                        <th className="py-2.5 px-2 sm:px-3 text-center text-[10px] sm:text-[11px] uppercase tracking-wider text-slate-600 font-bold">
+                          {t('priority_col_baseline')}
+                        </th>
+                        <th className="py-2.5 px-2 sm:px-3 text-center text-[10px] sm:text-[11px] uppercase tracking-wider text-slate-600 font-bold">
+                          {t('priority_col_today')}
+                        </th>
+                        <th className={`py-2.5 px-3 sm:px-4 text-[10px] sm:text-[11px] uppercase tracking-wider text-slate-600 font-bold ${locale === 'ar' ? 'text-left' : 'text-right'}`}>
+                          {t('priority_col_delta')}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {PRIORITY_BRANCHES.map((row) => {
+                        const isHovered = hoveredBranch === row.branch;
+                        
+                        return (
+                          <tr
+                            id={`row-${row.branch.replace(/\s+/g, '-').toLowerCase()}`}
+                            key={row.branch}
+                            className={`transition-all duration-150 cursor-pointer ${
+                              isHovered ? 'bg-[#fdfcf9]' : 'hover:bg-slate-50/50'
+                            }`}
+                            onMouseEnter={() => setHoveredBranch(row.branch)}
+                            onMouseLeave={() => setHoveredBranch(null)}
+                          >
+                            <td className={`py-2.5 px-3 sm:px-4 font-semibold text-navy-800 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+                              {t(row.branch)}
+                            </td>
+                            <td className="py-2.5 px-2 sm:px-3 text-center font-mono text-slate-600">
+                              {locale === 'ar' ? row.jun11.toLocaleString('ar-EG') : row.jun11}
+                            </td>
+                            <td className="py-2.5 px-2 sm:px-3 text-center font-mono font-bold text-navy-800">
+                              {locale === 'ar' ? row.today.toLocaleString('ar-EG') : row.today}
+                            </td>
+                            <td className={`py-2.5 px-3 sm:px-4 ${locale === 'ar' ? 'text-left' : 'text-right'}`}>
+                              {row.direction === 'improved' && (
+                                <span className="inline-block px-2 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] bg-emerald-50 text-[#2E7D5B] border border-emerald-100 whitespace-nowrap">
+                                  {locale === 'ar' ? `${row.delta} ${t('priority_status_improved')}` : `${row.delta} Improved`}
+                                </span>
+                              )}
+                              {row.direction === 'flat' && (
+                                <span className="inline-block px-2 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] bg-slate-100 text-slate-500 whitespace-nowrap">
+                                  {locale === 'ar' ? `٠ ${t('priority_status_stable')}` : `0 Stable`}
+                                </span>
+                              )}
+                              {row.direction === 'regressed' && (
+                                <span className="inline-block px-2 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] bg-rose-50 text-[#C0492F] border border-rose-100 whitespace-nowrap">
+                                  {locale === 'ar' ? `+${row.delta} ${t('priority_status_regressed')}` : `+${row.delta} Regressed`}
+                                </span>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
                       
-                      return (
-                        <tr
-                          id={`row-${row.branch.replace(/\s+/g, '-').toLowerCase()}`}
-                          key={row.branch}
-                          className={`transition-all duration-150 cursor-pointer ${
-                            isHovered ? 'bg-[#fdfcf9]' : 'hover:bg-slate-50/50'
-                          }`}
-                          onMouseEnter={() => setHoveredBranch(row.branch)}
-                          onMouseLeave={() => setHoveredBranch(null)}
-                        >
-                          <td className={`py-2.5 px-4 font-semibold text-navy-800 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
-                            {t(row.branch)}
-                          </td>
-                          <td className="py-2.5 px-3 text-center font-mono text-slate-600">
-                            {locale === 'ar' ? row.jun11.toLocaleString('ar-EG') : row.jun11}
-                          </td>
-                          <td className="py-2.5 px-3 text-center font-mono font-bold text-navy-800">
-                            {locale === 'ar' ? row.today.toLocaleString('ar-EG') : row.today}
-                          </td>
-                          <td className={`py-2.5 px-4 ${locale === 'ar' ? 'text-left' : 'text-right'}`}>
-                            {row.direction === 'improved' && (
-                              <span className="inline-block px-2 py-0.5 rounded-full font-bold text-[11px] bg-emerald-50 text-[#2E7D5B] border border-emerald-100">
-                                {locale === 'ar' ? `${row.delta} ${t('priority_status_improved')}` : `${row.delta} Improved`}
-                              </span>
-                            )}
-                            {row.direction === 'flat' && (
-                              <span className="inline-block px-2 py-0.5 rounded-full font-bold text-[11px] bg-slate-100 text-slate-500">
-                                {locale === 'ar' ? `٠ ${t('priority_status_stable')}` : `0 Stable`}
-                              </span>
-                            )}
-                            {row.direction === 'regressed' && (
-                              <span className="inline-block px-2 py-0.5 rounded-full font-bold text-[11px] bg-rose-50 text-[#C0492F] border border-rose-100">
-                                {locale === 'ar' ? `+${row.delta} ${t('priority_status_regressed')}` : `+${row.delta} Regressed`}
-                              </span>
-                            )}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                    
-                    {/* Grand Total Row */}
-                    <tr className="bg-[#F6F6F7] font-bold text-navy-800 border-t-2 border-navy-800/20">
-                      <td className={`py-3 px-4 uppercase text-xs tracking-wider ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
-                        {t('priority_status_total')}
-                      </td>
-                      <td className="py-3 px-3 text-center font-mono">
-                        {locale === 'ar' ? '٥٣' : '53'}
-                      </td>
-                      <td className="py-3 px-3 text-center font-mono">
-                        {locale === 'ar' ? '٤٧' : '47'}
-                      </td>
-                      <td className={`py-3 px-4 ${locale === 'ar' ? 'text-left' : 'text-right'}`}>
-                        <span className="inline-block px-2.5 py-0.5 rounded-full font-bold text-[11px] bg-emerald-100 text-[#2E7D5B] border border-emerald-200">
-                          {t('priority_status_net_fills')}
-                        </span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                      {/* Grand Total Row */}
+                      <tr className="bg-[#F6F6F7] font-bold text-navy-800 border-t-2 border-navy-800/20">
+                        <td className={`py-3 px-3 sm:px-4 uppercase text-xs tracking-wider ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+                          {t('priority_status_total')}
+                        </td>
+                        <td className="py-3 px-2 sm:px-3 text-center font-mono">
+                          {locale === 'ar' ? '٥٣' : '53'}
+                        </td>
+                        <td className="py-3 px-2 sm:px-3 text-center font-mono">
+                          {locale === 'ar' ? '٤٧' : '47'}
+                        </td>
+                        <td className={`py-3 px-3 sm:px-4 ${locale === 'ar' ? 'text-left' : 'text-right'}`}>
+                          <span className="inline-block px-2.5 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] bg-emerald-100 text-[#2E7D5B] border border-emerald-200 whitespace-nowrap">
+                            {t('priority_status_net_fills')}
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 
             {/* Sub-note caption exactly matching the text of section 2 template */}
-            <div className="mt-5 p-3.5 bg-slate-50 rounded-lg border border-slate-200/60 text-[11px] text-slate-600 italic">
+            <div className="mt-2 p-3.5 bg-slate-50 rounded-lg border border-slate-200/60 text-[11px] text-slate-600 italic leading-relaxed">
               {t('priority_caption')}
             </div>
           </div>
 
           {/* Grouped Bar Chart View (Cols 8-12) */}
-          <div className="lg:col-span-5 bg-slate-50/50 p-5 rounded-xl border border-slate-100 flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-slate-50/50 p-4 sm:p-5 rounded-xl border border-slate-100 flex flex-col justify-between gap-4">
             <div>
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 font-sans">
                 {t('priority_chart_title')}
@@ -171,9 +173,9 @@ export default function PriorityComparison() {
                       onMouseEnter={() => setHoveredBranch(row.branch)}
                       onMouseLeave={() => setHoveredBranch(null)}
                     >
-                      <div className="flex justify-between items-center text-xs mb-1">
+                      <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1 text-xs mb-1.5">
                         <span className="font-semibold text-slate-700">{t(row.branch)}</span>
-                        <div className="flex items-center gap-2 font-mono text-[10px]">
+                        <div className="flex items-center gap-1.5 xs:gap-2 font-mono text-[9px] xs:text-[10px]">
                           <span className="text-slate-400">
                             {locale === 'ar' ? `${t('priority_chart_baseline')} ${row.jun11.toLocaleString('ar-EG')}` : `Baseline ${row.jun11}`}
                           </span>

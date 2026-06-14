@@ -219,7 +219,7 @@ const LocaleContext = createContext<LocaleContextProps | undefined>(undefined);
 export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [locale, setLocaleState] = useState<Locale>(() => {
     const saved = localStorage.getItem('mathwaa_report_locale');
-    return (saved === 'ar' || saved === 'en') ? saved : 'en';
+    return (saved === 'ar' || saved === 'en') ? saved : 'ar';
   });
 
   const setLocale = (newLocale: Locale) => {
