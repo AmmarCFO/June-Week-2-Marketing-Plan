@@ -196,7 +196,7 @@ export default function PriorityComparison() {
                               width: `${pct11}%`,
                               [locale === 'ar' ? 'right' : 'left']: 0 
                             }}
-                            onMouseEnter={(e) => handleBarMouseEnter(e, row.branch, locale === 'ar' ? `خط أساس ١١ يونيو: ${row.jun11} شاغر` : `Jun 11 Baseline: ${row.jun11} vacant`)}
+                            onMouseEnter={(e) => handleBarMouseEnter(e, row.branch, locale === 'ar' ? `خط أساس ١١ مايو: ${row.jun11} شاغر` : `May 11 Baseline: ${row.jun11} vacant`)}
                             onMouseLeave={handleBarMouseLeave}
                           />
                         </div>
@@ -225,7 +225,7 @@ export default function PriorityComparison() {
 
             <div className="mt-4 pt-3 border-t border-slate-200/50 flex justify-between items-center text-[10px] font-mono text-slate-400">
               <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded bg-slate-400 inline-block" /> {locale === 'ar' ? '١١ يونيو' : 'Jun 11'}
+                <span className="w-2 h-2 rounded bg-slate-400 inline-block" /> {locale === 'ar' ? '١١ مايو' : 'May 11'}
               </span>
               <span className="flex items-center gap-1">
                 <span className="w-2 h-2 rounded bg-gold-500 inline-block" /> {locale === 'ar' ? '١٩ يونيو' : 'Jun 19'}

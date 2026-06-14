@@ -15,7 +15,7 @@ const DICTIONARY: Record<Locale, Record<string, string>> = {
     header_title: "Priority Branch Occupancy",
     header_sub_highlight: "Marketing Focus",
     header_subtitle: "Mathwaa Internal Executive Sync • Revenue Leakage Budget Directives",
-    header_baseline: "Baseline: 11 Jun  •  Status: 19 Jun 2026",
+    header_baseline: "Baseline: 11 May  •  Status: 19 Jun 2026",
     
     // KPIs
     kpi_total_vacancies_title: "Total Vacancies",
@@ -29,10 +29,10 @@ const DICTIONARY: Record<Locale, Record<string, string>> = {
 
     // Priority comparison
     priority_section_title: "Priority Branch Movement",
-    priority_section_subtitle: "Jun 11 Baseline vs Jun 19 Status across the 8 core priority branches.",
+    priority_section_subtitle: "May 11 Baseline vs Jun 19 Status across the 8 core priority branches.",
     priority_sort_label: "Sort: Absolute Improvement",
     priority_col_branch: "Branch ID & Name",
-    priority_col_baseline: "Jun 11",
+    priority_col_baseline: "May 11",
     priority_col_today: "Today",
     priority_col_delta: "Delta Status",
     priority_status_improved: "Improved",
@@ -89,7 +89,7 @@ const DICTIONARY: Record<Locale, Record<string, string>> = {
     insight_4_badge: "Performance Audit",
 
     // Footer
-    footer_text: "Mathwaa — Internal Marketing Sync · Baseline 11 Jun 2026 vs 19 Jun 2026 · Leakage = 2nd-negotiation price × branch Mathwaa share, summed over current vacant units · Figures verified from Odoo export.",
+    footer_text: "Mathwaa — Internal Marketing Sync · Baseline 11 May 2026 vs 19 Jun 2026 · Leakage = 2nd-negotiation price × branch Mathwaa share, summed over current vacant units · Figures verified from Odoo export.",
     confidential: "CONFIDENTIAL · INTERNAL ONLY",
 
     // Branches
@@ -116,7 +116,7 @@ const DICTIONARY: Record<Locale, Record<string, string>> = {
     header_title: "إشغال الفروع ذات الأولوية",
     header_sub_highlight: "التركيز التسويقي",
     header_subtitle: "المزامنة التنفيذية الداخلية لمثوى • توجيهات ميزانية تسريب الإيرادات",
-    header_baseline: "خط الأساس: ١١ يونيو  •  الحالة: ١٩ يونيو ٢٠٢٦",
+    header_baseline: "خط الأساس: ١١ مايو  •  الحالة: ١٩ يونيو ٢٠٢٦",
     
     // KPIs
     kpi_total_vacancies_title: "إجمالي الشواغر",
@@ -130,10 +130,10 @@ const DICTIONARY: Record<Locale, Record<string, string>> = {
 
     // Priority comparison
     priority_section_title: "حركة الفروع ذات الأولوية",
-    priority_section_subtitle: "خط الأساس في ١١ يونيو مقابل حالة ١٩ يونيو عبر الـ ٨ فروع الرئيسية ذات الأولوية.",
+    priority_section_subtitle: "خط الأساس في ١١ مايو مقابل حالة ١٩ يونيو عبر الـ ٨ فروع الرئيسية ذات الأولوية.",
     priority_sort_label: "الترتيب: التحسن الفعلي المطلق",
     priority_col_branch: "معرّف الفرع والاسم",
-    priority_col_baseline: "١١ يونيو",
+    priority_col_baseline: "١١ مايو",
     priority_col_today: "اليوم",
     priority_col_delta: "حالة التغير",
     priority_status_improved: "تحسّن",
@@ -190,7 +190,7 @@ const DICTIONARY: Record<Locale, Record<string, string>> = {
     insight_4_badge: "تدقيق الأداء",
 
     // Footer
-    footer_text: "مثوى — مزامنة التسويق الداخلي · خط الأساس ١١ يونيو ٢٠٢٦ مقابل ١٩ يونيو ٢٠٢٦ · التسريب الإيجاري = سعر التفاوض الثاني × حصة مثوى بالفرع، مجمعة على الشواغر الحالية · تم التحقق من البيانات وتطابقها مع نظام Odoo.",
+    footer_text: "مثوى — مزامنة التسويق الداخلي · خط الأساس ١١ مايو ٢٠٢٦ مقابل ١٩ يونيو ٢٠٢٦ · التسريب الإيجاري = سعر التفاوض الثاني × حصة مثوى بالفرع، مجمعة على الشواغر الحالية · تم التحقق من البيانات وتطابقها مع نظام Odoo.",
     confidential: "سري للغاية · للاستخدام الداخلي فقط",
 
     // Branches
