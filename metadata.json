@@ -1,0 +1,6 @@
+{
+  "name": "Mathwaa Priority-Branch Occupancy Dashboard",
+  "description": "Internal dashboard for Mathwaa's marketing sync showing priority branch occupancy shifts and monthly revenue leakage analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

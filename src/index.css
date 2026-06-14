@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Cairo:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", "Amiri", Georgia, serif;
+  --font-sans: "Inter", "Cairo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-navy-900: #0f192d;
+  --color-navy-800: #1B2A4A;
+  --color-navy-700: #293d6a;
+  --color-navy-600: #3c548a;
+  
+  --color-gold-50: #faf7f2;
+  --color-gold-100: #f4edd9;
+  --color-gold-200: #e8d9b5;
+  --color-gold-500: #C8A45C;
+  --color-gold-600: #b08d4b;
+  --color-gold-700: #94723a;
+  
+  --color-cream-100: #fdfcf9;
+  --color-cream-200: #F3ECE0;
+  --color-cream-300: #EFE9DC;
+  --color-cream-400: #dfd5c2;
+  
+  --color-light-bg: #F6F6F7;
+  
+  --color-brand-green-bg: #e6f4ea;
+  --color-brand-green-text: #2E7D5B;
+  
+  --color-brand-red-bg: #fdf2f2;
+  --color-brand-red-text: #C0492F;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-light-bg);
+  color: #1a2333;
+}
+
